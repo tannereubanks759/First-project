@@ -8,9 +8,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject menu;
     public KeyCode testingKey;
     public TextMeshProUGUI testingText;
+    public bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         menu.SetActive(false);
     }
 
@@ -42,11 +44,27 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
-            menu.SetActive(!menu.activeInHierarchy);
+            TogglePauseGame();
         }
         
     }
+    public void TogglePauseGame()
+    {
+        //pause time
+        isPaused = !isPaused;
 
+        //menu.SetActive(!menu.activeInHierarchy);
+        menu.SetActive(isPaused);
+
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
     public void LoadLevel(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
