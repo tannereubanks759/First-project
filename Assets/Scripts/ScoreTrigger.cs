@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreTrigger : MonoBehaviour
 {
-    int score = 0;
+    static int score = 0;
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Amongus")
