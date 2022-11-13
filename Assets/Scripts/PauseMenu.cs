@@ -14,6 +14,12 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         menu.SetActive(false);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UnPauseMusic();
+        }
+            
+
     }
 
     // Update is called once per frame
@@ -59,14 +65,22 @@ public class PauseMenu : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 0f;
+            //GameManager.Instance.audio.pitch = 0f;
+            GameManager.Instance.PauseMusic();
         }
         else
         {
             Time.timeScale = 1f;
+            //GameManager.Instance.audio.pitch = 1f;
+            GameManager.Instance.UnPauseMusic();
         }
     }
     public void LoadLevel(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        GameManager.Instance.audio.PlayOneShot(clip);
     }
 }
