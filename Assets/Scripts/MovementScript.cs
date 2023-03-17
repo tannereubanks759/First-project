@@ -32,7 +32,7 @@ public class MovementScript : MonoBehaviour
 
     bool CheckForWall(Vector3 direction, float range)
     {
-        RaycastHit info;
+        
 
         Debug.DrawRay(this.transform.position, direction * range * 2, Color.red, 1);
 
